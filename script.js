@@ -51,10 +51,10 @@ document.getElementById('scrollButton3').addEventListener('click', function() {
 const https = require('https');
 
 const data = JSON.stringify({
-  event_name: 'CompleteRegistration',
+  event_name: 'Lead',
   event_time: Math.floor(new Date() / 1000),
   action_source: 'website',
-  event_source_url: 'http://www.exemplo.com/pagina-de-obrigado',
+  event_source_url: 'http://g3midia.github.io/sunflower.html/',
   user_data: {
     em: 'HASHED_EMAIL', // Email do usuário com hash SHA-256
     ph: 'HASHED_PHONE'  // Telefone do usuário com hash SHA-256
@@ -67,7 +67,7 @@ const data = JSON.stringify({
 
 const options = {
   hostname: 'graph.facebook.com',
-  path: `/v11.0/SEU_PIXEL_ID/events?access_token=SEU_ACCESS_TOKEN`, // Substitua 'SEU_PIXEL_ID' e 'SEU_ACCESS_TOKEN'
+  path: `/v11.0/780326857238526/events?access_token=EAAGU6RCxntMBOxWmrk0e2hPI7uZAPNSLiVKefnodYZCIGRUCKZCZCB48k8PzSXqNwbZA7rZCaOPLZBQnSkjwikCozQzGEEYrYy1ZBYKvQj1a9iiy1zgSFVvlbylFFzAvM8C4BVjLFS1M9ErHfwXRDolYCNZB6jO0TBu7mrp1ZCySHCFFiKwn6ujjZCCEVUZCyW5lYhPODgZDZD`, // Substitua 'SEU_PIXEL_ID' e 'SEU_ACCESS_TOKEN'
   method: 'POST',
   headers: {
     'Content-Type': 'application/json',

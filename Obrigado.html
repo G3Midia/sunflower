@@ -38,5 +38,45 @@ src="https://www.facebook.com/tr?id=780326857238526&ev=PageView&noscript=1"
    <!-- Start of HubSpot Embed Code -->
 <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/24316432.js"></script>
 <!-- End of HubSpot Embed Code -->
+
+<!-- Código da API de Conversão -->
+    <script>
+        // Substitua pelo seu token de acesso e ID do Pixel
+        const accessToken = 'EAAGU6RCxntMBOxRZAITG5NuBCPCmaSoIvwkEEXgOaRnjZAy8xcgKJ4hEWfAE6q8fvPSaNsOeHwtKNJx0ugzySDd3Xa4KIjbfyGKotzDrbVbMfpsZBNrVVSSQ2Mnc1CEZBdWW8V1lr51xHtkEh1JCKRgIiT0PYTMKH4UDrkbE3TTEhifQOZBsBGV52ZCSYKzjv3ZBwZDZD';
+        const pixelId = '780326857238526';
+
+        // Dados do evento
+        const eventData = {
+            event_name: 'Lead',
+            event_time: Math.floor(new Date() / 1000),
+            user_data: {
+                // Dados de exemplo, ajuste conforme necessário
+                em: 'HASHED_EMAIL', // Email com hash SHA256
+                ph: 'HASHED_PHONE', // Telefone com hash SHA256
+            },
+            custom_data: {
+                currency: 'BRL',
+                value: 0.00
+            },
+            event_source_url: window.location.href,
+            action_source: 'website'
+        };
+
+        // Enviar a solicitação para a API de Conversão
+        fetch(`https://graph.facebook.com/v11.0/780326857238526/events?access_token=EAAGU6RCxntMBOxRZAITG5NuBCPCmaSoIvwkEEXgOaRnjZAy8xcgKJ4hEWfAE6q8fvPSaNsOeHwtKNJx0ugzySDd3Xa4KIjbfyGKotzDrbVbMfpsZBNrVVSSQ2Mnc1CEZBdWW8V1lr51xHtkEh1JCKRgIiT0PYTMKH4UDrkbE3TTEhifQOZBsBGV52ZCSYKzjv3ZBwZDZD`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({data: [eventData]})
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log('Success:', data);
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    </script>
 </body>
 </html>
